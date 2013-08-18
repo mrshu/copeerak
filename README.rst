@@ -5,3 +5,5 @@ copeerak
 
 (Centralized OPtical mEdia rEproducing pRacticAl toolKit) 
 
+*Transform old hardware into a backup/copy station*
+
