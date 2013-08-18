@@ -7,3 +7,6 @@ copeerak
 
 *Transform old hardware into a backup/copy station*
 
+Licensed under the BSD license.
+
+(c) 2013, mr.Shu
