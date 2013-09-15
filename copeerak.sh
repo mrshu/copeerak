@@ -3,6 +3,7 @@
 CD_BLANK=0
 CD_DATA=1
 CD_MEDIA=2
+
 function cddrive_contents {
         OUT=$(timeout 3 cdda2wav -J -g /dev/sr0 >& /dev/stdout)
         if [[ -n `echo $OUT | grep load` ]]; then
@@ -14,7 +15,13 @@ function cddrive_contents {
         fi
 }
 
+STATUS_NO_DISC=0
+STATUS_WAITING_FOR_BLANK=1
+
+STATUS=$STATUS_NO_DISC
 
 while [ true ]; do
-        case "
+        if [[ $STATUS -eq $STATUS_NO_DISC ]]; then
+                echo "..."
+        fi
 done
