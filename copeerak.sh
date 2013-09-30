@@ -22,6 +22,12 @@ STATUS=$STATUS_NO_DISC
 
 while [ true ]; do
         if [[ $STATUS -eq $STATUS_NO_DISC ]]; then
-                echo "..."
+                case cddrive_contents in
+                        $CD_MEDIA)
+                        cdd2wav dev=0,0,0 -vall cddb=0 -B -Owav 
+                        STATUS=$STATUS_WAITING_FOR_BLANK
+                        ;;
+
+                esac
         fi
 done
