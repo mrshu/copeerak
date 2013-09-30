@@ -16,7 +16,8 @@ function cddrive_contents {
 }
 
 STATUS_NO_DISC=0
-STATUS_WAITING_FOR_BLANK=1
+STATUS_WAITING_FOR_BLANK_MEDIA=1
+STATUS_WAITING_FOR_BLANK_DATA=2
 
 STATUS=$STATUS_NO_DISC
 
@@ -25,7 +26,7 @@ while [ true ]; do
                 case cddrive_contents in
                         $CD_MEDIA)
                         cdd2wav dev=0,0,0 -vall cddb=0 -B -Owav 
-                        STATUS=$STATUS_WAITING_FOR_BLANK
+                        STATUS=$STATUS_WAITING_FOR_BLANK_MEDIA
                         ;;
 
                 esac
