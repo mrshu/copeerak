@@ -25,10 +25,22 @@ while [ true ]; do
         if [[ $STATUS -eq $STATUS_NO_DISC ]]; then
                 case cddrive_contents in
                         $CD_MEDIA)
-                        cdd2wav dev=0,0,0 -vall cddb=0 -B -Owav 
-                        STATUS=$STATUS_WAITING_FOR_BLANK_MEDIA
+                                cdd2wav dev=0,0,0 -vall cddb=0 -B -Owav
+                                STATUS=$STATUS_WAITING_FOR_BLANK_MEDIA
                         ;;
-
                 esac
         fi
+        if [[ $STATUS -eq $STATUS_WAITING_FOR_BLANK_MEDIA ]]; then
+                case cddrive_contents in
+                        $CD_BLANK)
+                                cdrecord dev=0,0,0 -v -dao -useinfo -text *.wav
+                                rm *.wav
+                                STATUS=$STATUS_NO_DISC;
+                                ;;
+                        *)
+                                eject
+                                ;;
+                esac
+        fi
+
 done
