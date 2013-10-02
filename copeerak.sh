@@ -27,7 +27,11 @@ while [ true ]; do
                         $CD_MEDIA)
                                 cdd2wav dev=0,0,0 -vall cddb=0 -B -Owav
                                 STATUS=$STATUS_WAITING_FOR_BLANK_MEDIA
-                        ;;
+                                ;;
+                        *)
+                                eject
+                                ;;
+ 
                 esac
         fi
         if [[ $STATUS -eq $STATUS_WAITING_FOR_BLANK_MEDIA ]]; then
